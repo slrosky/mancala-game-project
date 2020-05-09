@@ -1,0 +1,67 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Questrial', sans-serif;
+    background-image: url(https://i.imgur.com/HUFeVSR.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1 {
+    color: pink;
+    font-size: 40px;
+}
+
+p {
+    font-size: 28px;
+}
+
+#board {
+    background-color: #CD853F;
+    width: 800px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 2fr repeat(6, 1fr) 2fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2vmin;
+    align-content: center;
+    font-size: 14px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#board div {
+    background: radial-gradient(#EECD9E, #b38b6d);
+    border-radius: 45%;
+    margin: 10px 0;
+}
+
+.mancala-cup-p1 {
+    grid-row: span 2;
+}
+
+.mancala-cup-p2 {
+    grid-row: span 2;
+}
+
+button {
+    color: #964B00;
+    background: pink;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Questrial', sans-serif;
+}
+
+button:hover {
+    background: #964B00;
+    color: white;
+}
