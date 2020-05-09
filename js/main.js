@@ -15,7 +15,7 @@ let gameBoard = document.getElementById('board')
 const msgEl = document.getElementById('msg');
 
 /*----- event listeners -----*/
-gameBoard.addEventListener('click', handleBoardClick)
+gameBoard.addEventListener('click', playClick)
 
 
 /*----- functions -----*/
@@ -29,5 +29,9 @@ function init() {
 }
 
 function render() {
+
+};
+
+function playClick(e) {
 
 };
