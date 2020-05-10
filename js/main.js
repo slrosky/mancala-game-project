@@ -14,13 +14,13 @@ let mySide = {
 //     {
 //         name: 'Player One',
 //         turn: '1',
-//         startPlay: [board[1], board[2], board[3], board[4], board[5], board[6]],
+//         mySide: [board[1], board[2], board[3], board[4], board[5], board[6]],
 //     },
 
 //     {
 //         name: 'Player Two',
 //         turn: '-1',
-//         startPlay: [board[8], board[9], board[10], board[11], board[12], board[13]],
+//         mySide: [board[8], board[9], board[10], board[11], board[12], board[13]],
 // ]
 
 
@@ -79,6 +79,7 @@ function renderBoard() {
     board.forEach(function(cell, idx) {
         const div = document.getElementById(`cup${idx}`);
     });
+
 }
 
 function playClick(e) {
@@ -99,21 +100,27 @@ function playClick(e) {
 // if turn = -1 OR 1, then iterate over array in specific sequence (counter-clockwise)
 // is playClick must recognize (parseInt?) the numberic value at that index
 
-// function startCup(idx){
-//     // if turn = 1, startCup can be: board[1] || board[2] || board[3] || board[4] || board[5] || board[6]
-//     // if turn = -1, startCup can be: board[8] || board[9] || board[10] || board[11] || board[12] || board[13]
-//     // OR can I say if index >= 1 && index <= 6, 
-// }
+function startCup(idx){
+    // if turn = 1, startCup can be: board[1] || board[2] || board[3] || board[4] || board[5] || board[6]
+    // if turn = -1, startCup can be: board[8] || board[9] || board[10] || board[11] || board[12] || board[13]
+    // OR can I say if index >= 1 && index <= 6, 
+}
 
-// function sequence() {
-//     //for loop (?) to iterate through the board
-//     for (let i = 0; i < 7; i++)
+function sequence() {
+    //for loop (?) to iterate through the board
+}
 
-// };
+function turn();
+    for (let i = 0; i < 7; i++)
 
-// function getWinner() {
-//  for (let i = 0; i < mySide.length; i++) {
-//     if (mySide.reduce === 0) // <-- indates game over and must calculate/render a winner
-     // then cups on each mySide must be iterated through to calculate the sum + each mancala cup respectively
-    // else //switch turns: turn *= -1 (?)
-// };
+    for (let i = 8; i < 14; i++)
+
+
+};
+
+function getWinner() {
+ for (let i = 0; i < mySide.length; i++) {
+    if (mySide.reduce === 0) // <-- indates game over and must calculate/render a winner
+    //  then cups on each mySide must be iterated through to calculate the sum + each mancala cup respectively
+    else //switch turns: turn *= -1 (?)
+};
