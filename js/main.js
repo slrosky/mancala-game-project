@@ -54,8 +54,8 @@ const cupEls = Array.from(document.querySelectorAll('div'))
 // add a cached hand element to indicate value in play for player with active turn
 
 /*----- event listeners -----*/
-document.querySelector('button').addEventListener('click', init);
-gameBoard.addEventListener('btn', playClick)
+document.querySelector('btn').addEventListener('click', init);
+gameBoard.addEventListener('board', playClick)
 
 
 /*----- functions -----*/
@@ -63,8 +63,10 @@ function init() {
     board = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4];
     turn = 1;
     winner = null; // when the game first initializes, there is no winner
+    msgEl.innerHTML = "Let's start the game!";
     render ();
 };
+
 init();
 
 console.log(board[0].value);
@@ -72,11 +74,12 @@ console.log(board[3].value);
 
 function render() {
     winner = getWinner();
-    msgEl.innerHTML = "Let's start the game!";
+    renderBoard();
+    // msg.innerHTML = all msgs during game
 };
 
 function renderBoard() {
-    board.forEach(function(cell, idx) {
+    board.forEach(function(cups, idx) {
         const div = document.getElementById(`cup${idx}`);
     });
 
@@ -92,6 +95,7 @@ function playClick(e) {
     sequence();
     // if element < 1, return
     // if element > 1, parseInt of the element in index clicked (target id)
+    // check end game (if idx)
 };
 
 //set the variable "hand" as the recognition of the element's numeric value
