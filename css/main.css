@@ -17,7 +17,13 @@ body {
 }
 
 h1 {
-    color: pink;
+    /* color: pink; */
+    color: #964B00;
+    font-size: 60px;
+}
+
+h2 {
+    text-align: center;
     font-size: 40px;
 }
 
@@ -27,8 +33,8 @@ p {
 
 #board {
     background-color: #CD853F;
-    width: 800px;
-    height: 300px;
+    width: 900px;
+    height: 400px;
     display: grid;
     grid-template-columns: 2fr repeat(6, 1fr) 2fr;
     grid-template-rows: repeat(2, 1fr);
@@ -47,11 +53,7 @@ p {
     background-repeat: no-repeat;
 }
 
-.mancala-cup-p1 {
-    grid-row: span 2;
-}
-
-.mancala-cup-p2 {
+.mancala-cup {
     grid-row: span 2;
 }
 

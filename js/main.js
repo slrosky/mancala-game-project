@@ -1,15 +1,12 @@
-console.log('page loaded')
 /*----- constants -----*/
 const playerLookup = {
     '1': {
         name: 'Player One',
         hand: 0,
-        mySide: []
     },
     '-1': {
         name: 'Player Two',
         hand: 0,
-        myside: []
     },
   }
 
@@ -23,7 +20,6 @@ let gameBoard = document.getElementById('board')
 const msgEl = document.getElementById('msg');
 
 
-console.log('hello',gameBoard)
 /*----- event listeners -----*/
 document.getElementById('btn').addEventListener('click', init);
 gameBoard.addEventListener('click', playClick)
@@ -34,28 +30,17 @@ function init() {
     board = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4];
     turn = 1;
     winner = null; // when the game first initializes, there is no winner
-    msgEl.innerHTML = "Let's start the game!";
+    msgEl.innerHTML = `Let's start the game!<br>${playerLookup[turn].name}, you're up!`;
     render();
 };
 
 init();
-    console.log(board);
+
 
 function render() {
-    winner = getWinner();
+    // winner = getWinner();
     renderBoard();
-    // if (winner) {
-    //     if (winner === 'T') {
-    //       msgEl.innerHTML = "It's a Tie!";
-    //     } else {
-    //       msgEl.innerHTML = `${playerLookup[winner].toUpperCase()} CONGRATULATIONS<BR> YOU WON!`;
-    //     }
-    //   } else {
-    //     // Show whose turn it currently is
-    //     msgEl.innerHTML = `${playerLookup[turn].toUpperCase()}'s</span> Turn`;
-    //   }
-    // };
-    if ()
+    // renderMsg();
 };
 
 function renderBoard() {
@@ -63,30 +48,28 @@ function renderBoard() {
         const cupEl = document.getElementById(`cup${idx}`);
         cupEl.style.backgroundImage = `url(imgs/${numPieces}pc-MancalaCup.png)`;
     });
-}
+};
+
+// function renderMsg() {
+//     if (winner = null) {
+//         msgEl.innerHTML = `${playerLookup[turn].name.toUpperCase()}'s</span> Turn`;
+//     }
+// };
 
 function playClick(e) {
-    // const idx = cupEls.indexOf(e.target)
     let idx = parseInt(e.target.id.replace('cup', ''));
     playTurn(idx);
+    checkEndGame();
     render();
 };
 
 function playTurn(idx) {
-    console.log('hitting', turn)
     if (turn === 1) {
         if (idx > 6 || idx === 0 || board[idx] == 0) {
             return;
         } else {
             playHand(idx);
-            if (idx === 7) {
-                playClick();
-            }
-            if (board[idx] > 1 && idx > 6 || idx === 0 || board[idx] == 0) {
-                playHand(idx);
-            }
             changeTurn();
-            console.log(board)
         }
     } else if (turn === -1) {
         if (idx == 0 || idx < 8) {
@@ -94,14 +77,13 @@ function playTurn(idx) {
         } 
         else {
             playHand(idx);
-            // checkEndGame(idx);
             changeTurn();
-            console.log(board)
         }
     }
 };
 
 function playHand(idx) {
+    // let clickedSquare = idx;
     playerLookup[turn].hand = board[idx];
     board[idx] = 0;
     while (playerLookup[turn].hand > 0) {
@@ -111,34 +93,73 @@ function playHand(idx) {
         }
         if ((turn === 1 && idx !== 0) || (turn === -1 && idx !== 7)) {
             board[idx] += 1
-            // console.log('IDX', idx)
-            // console.log('cup value', board[idx])
-            // console.log('PLAYERHAND', playerLookup[turn].hand)
         }
         playerLookup[turn].hand -= 1
     }
-    if (board[idx] > 1 && idx !== 0 && idx !== 7) {
-        console.log('recursive working')
-        playHand(turn, idx)
-    } //else {
+    if (turn === 1 && idx == 7) {
+        changeTurn();
+    }
+    if (turn === -1 && idx == 0){
+        changeTurn();
+    } // if (board[idx] > 1 && idx !== 0 && idx !== 7) {
+            // console.log('recursive working')
+            // playHand(turn, idx)
+            //} else {
         //checkMatch(idx)
     //}
-}
+};
 
 
-function checkSide() {
-    if (playerLookup[turn] === 1) {
-        playerLookup.mySide.push(idx[1], idx[2], idx[3], idx[4], idx[5], idx[6]);
-    } else {
-        playerLookup.mySide.push(idx[8], idx[9], idx[10], idx[11], idx[12], idx[13])
+
+function changeTurn() {
+    turn *= -1;
+};
+
+function checkEndGame() {
+    const playerOneSide = board.slice(1, 7).reduce(function(acc, cur) {
+        return acc + cur
+    }, 0);
+    const playerTwoSide = board.slice(8).reduce(function(acc, cur) {
+        return acc + cur
+    }, 0);
+    if (playerOneSide === 0 || playerTwoSide === 0) {
     }
-console.log(myside)
-}
-// function breakTurn(idx) {
-//     if (idx === 7)
+       winner = getWinner();
+
+};
+    
+    
+function getWinner(playerOneSide, playerTwoSide) {
+    let playerOneTotal = playerOneSide + board[7];
+    console.log(playerOneTotal)
+    let playerTwoTotal = playerTwoSide + board[0];
+    console.log(playerTwoTotal)
+    if (playerOneTotal > playerTwoTotal) {
+       msgEl.innerHTML = `CONGRATULATIONS PLAYER ONE<BR> YOU WON!`
+    } else if (playerOneTotal < playerTwoTotal) {
+        msgEl.innerHTML = `CONGRATULATIONS PLAYER ONE<BR> YOU WON!`
+    } else if (playerOneTotal = playerTwoTotal) {
+        msgEl.innerHTML = `OOH FUN - A TIE!`
+    } else {
+        msgEl.innerHTML = `${playerLookup[turn].name}'s</span> Turn`;
+    }
+};
+
+// function getWinner(playerOneSide, playerTwoSide) {
+//     let playerOneTotal = playerOneSide + board[7];
+//     let playerTwoTotal = playerTwoSide + board[0];
+//     if (playerOneTotal > playerTwoTotal) {
+//         return playerOne
+//     } else if (playerOneTotal < playerTwoTotal) {
+//         return playerTwo
+//     } else {
+//         return 'T'
+//     }
 // };
 
-// function 
+                            
+
+
 
 // function checkMatch(idx) {
     // console.log(idx)
@@ -168,39 +189,4 @@ console.log(myside)
     //     if  (board[13] < board[1] || board[12] < board[2] || board[11] < board[3] || board[10] < board[4] || board[9] < board[5] || board[8] < board[6]) {
     //     //add value of board[idx] to board[idx][7]
     // }
-// };
-
-function changeTurn() {
-    turn *= -1;
-}
-
-function checkEndGame(idx) {
-    let sum = 0;
-    if (idx === 7 || idx === 0) {
-        for (let idx = 1; idx < 8 ; idx++) {
-            sum += board[idx]
-        }
-    };
-    if (idx === 7 || idx === 0) {
-        for (let idx = 8; idx <= 13 ; idx++) {
-            sum += board[idx];
-        }
-        console.log('here is the total of the side', sum)
-    }
-};
-
-function getWinner() {
-    let playerTotal = board.reduce(function(a, b){
-        return a + b;
-    })
-};
-
-
-//  let playerTwoTotal = 0;
-//     for (let idx = 0; idx < board.length; idx++) {
-//     if (mySide.reduce === 0) // <-- indates game over and must calculate/render a winner
-//     //  then cups on each mySide must be iterated through to calculate the sum + each mancala cup respectively
-//     else //switch turns: turn *= -1 (?)
-//     return 'T';
-
 // };
