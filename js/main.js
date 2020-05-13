@@ -34,7 +34,7 @@ gameBoard.addEventListener('click', playClick)
 /*----- functions -----*/
 function init() {
     board = [0, 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4];
-    turn = -1;
+    turn = 1;
     winner = null; // when the game first initializes, there is no winner
     msgEl.innerHTML = "Let's start the game!";
     renderBoard();
@@ -47,98 +47,127 @@ init();
 function render() {
     // winner = getWinner();
     // msg.innerHTML = all msgs during game
-    turn *= -1;
+    renderBoard();
 };
 
 function renderBoard() {
-    board.forEach(function(cups, idx) {
-        const div = document.getElementById(`cup${idx}`);
+    board.forEach(function(idx) {
+        idx = board[idx];
+        // const cups = document.getElementById(`cup${idx}`);
     });
 }
 
 function playClick(e) {
     // const idx = cupEls.indexOf(e.target)
     let idx = parseInt(e.target.id.replace('cup', ''));
-    if (turn === 1) {
-        if (idx > 6 || idx === 0) {
-            return
-        // } else if (idx == 0) {
-        //     return
-        } else {
-            playerLookup[1].hand = board[idx]
-            board[idx] = 0;
-            while (playerLookup[1].hand > 0) {
-                idx++
-                if (idx === board.length) {
-                    idx = 0
-                }
-                board[idx] += 1
-                playerLookup[1].hand -= 1
-            }
-            // for (let i = 1; i <= board[idx]; i++) {
-            //     board[idx+i] += 1 //add modulo to control loop to skip 
-            // }
-            // if (playerLookup[1].hand = 0 && idx > 1) {
-                
-                //
-            //}
-            console.log(board)
-        }
-        //
-    }
-    if (turn === -1) {
-        if (idx == 0 || idx <= 8) {
-            return
-        } else {
-            playerLookup[-1].hand = board[idx]
-            board[idx] = 0;
-            while (playerLookup[-1].hand > 0) {
-                idx++
-                if (idx === board.length) {
-                    idx = 0
-                }
-                board[idx] += 1
-                playerLookup[-1].hand -= 1
-            }
-            console.log(board)
-        }
-    }
-    board[idx];
-    //    var pieceCount = document.getElementById(cups[i]);
-    // console.log(pieceCount);
-    
-    // console.log(board[idx],value);
-    console.log(board[idx]);
-    // if(board[idx].value = 0 || winner) return;
-    // if(board[idx].value >= 1);
-    // e.target.playerPieces = ??;
-    // board[idx] = turn;
-    // turn(); // is this the simple turn *= -1 (?) to swap the turn, because turn has to be associated with mySide
-    // sequence();
-    // if element value < 1, return
-    // if element > 1, parseInt of the element in index clicked (target id)
-    // check end game (if idx = 0 at all mySide (do I need to Math.abs and sum the arrays?), game is over)
+    playTurn(idx);
     render();
 };
 
-//set the variable "hand" as the recognition of the element's numeric value
-    // use parseInt method on the 
+function playTurn(idx) {
+    console.log('hitting', turn)
+    if (turn === 1) {
+        if (idx > 6 || idx === 0 || board[idx] == 0) {
+            return;
+        } else {
+            playHand(turn, idx);
+            changeTurn();
+            checkMatch();
+            console.log(board)
+        }
+    } else if (turn === -1) {
+        if (idx == 0 || idx <= 8) {
+            return
+        } 
+        else {
+            playHand(turn, idx);
+            changeTurn();
+            checkMatch()
+            console.log(board)
+        }
+    }
+};
 
-// if turn = -1 OR 1, then iterate over array in specific sequence (counter-clockwise)
-// is playClick must recognize (parseInt?) the numberic value at that index
+function playHand(turn, idx) {
+    playerLookup[turn].hand = board[idx];
+    board[idx] = 0;
+    while (playerLookup[turn].hand > 0) {
+        idx++
+        if (idx === board.length) {
+            idx = 0
+        }
+        if ((turn === 1 && idx !== 0) || (turn === -1 && idx !== 7)) {
+            board[idx] += 1
+            playerLookup[turn].hand -= 1
+            // console.log('IDX', idx)
+            // console.log('cup value', board[idx])
+            // console.log('PLAYERHAND', playerLookup[turn].hand)
+        }
+    }
+    if (board[idx] > 1 && idx !== 0 && idx !== 7) {
+        console.log('recursive working')
+        playHand(turn, idx)
+    } else {
+        checkMatch(idx)
+    }
+}
 
+// function breakTurn(idx) {
+//     if (idx === 7)
+// };
 
-// function turn() {
-//     for (let i = 0; i < 7; i++)
+// function 
 
-//     for (let i = 8; i < 14; i++)
+function checkMatch(idx) {
+    console.log(idx)
+    complimentNumber[idx] 
 
+    const complimentNumber = {
+        1: 13,
+        2: 12,
+        3: 11,
+        4: 10,
+        5: 9,
+        6: 8,
+        13: 1,
+        12: 2,
+        11: 3,
+        8: 6,
+        
+        ...
+        13: 1} ;
+    // board[ complimentNumber[idx] ] = if there’s piece here, add it to the current player
+    // if (turn === 1) {
+    //     if  (board[1] < board[13] || board[2] < board[12] || board[3] < board[11] || board[4] < board[10] || board[5] < board[9] || board[6] < board[8]) {
+    //     //add value of board to board[7]
+    //     }
+    // }
+    // if (turn === -1) {
+    //     if  (board[13] < board[1] || board[12] < board[2] || board[11] < board[3] || board[10] < board[4] || board[9] < board[5] || board[8] < board[6]) {
+    //     //add value of board[idx] to board[idx][7]
+    // }
+};
 
+function changeTurn() {
+    turn *= -1;
+}
+
+// function checkEndGame(idx) {
+//     if ()
+//     for (let idx = 1; idx < 7; idx++) {
+//         if (board[idx] = 1) {
+//     } else if ((board[idx] > 1) {
+//         return;
+//     };
 // };
 
 // function getWinner() {
-//  for (let i = 0; i < mySide.length; i++) {
+//  let playerOneTotal = 0;
+//  let playerTwoTotal = 0;
+//     for (let idx = 0; idx < board.length; idx++) {
 //     if (mySide.reduce === 0) // <-- indates game over and must calculate/render a winner
 //     //  then cups on each mySide must be iterated through to calculate the sum + each mancala cup respectively
 //     else //switch turns: turn *= -1 (?)
+//     return 'T';
+
 // };
