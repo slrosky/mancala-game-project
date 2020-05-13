@@ -43,6 +43,8 @@ p {
     background: radial-gradient(#EECD9E, #b38b6d);
     border-radius: 45%;
     margin: 10px 0;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .mancala-cup-p1 {
