@@ -38,7 +38,7 @@ init();
 
 
 function render() {
-    // winner = getWinner();
+    winner = getWinner();
     renderBoard();
     // renderMsg();
 };
@@ -59,7 +59,7 @@ function renderBoard() {
 function playClick(e) {
     let idx = parseInt(e.target.id.replace('cup', ''));
     playTurn(idx);
-    checkEndGame();
+    // getWinner();
     render();
 };
 
@@ -115,33 +115,39 @@ function changeTurn() {
     turn *= -1;
 };
 
-function checkEndGame() {
-    const playerOneSide = board.slice(1, 7).reduce(function(acc, cur) {
-        return acc + cur
-    }, 0);
-    const playerTwoSide = board.slice(8).reduce(function(acc, cur) {
-        return acc + cur
-    }, 0);
-    if (playerOneSide === 0 || playerTwoSide === 0) {
-    }
-       winner = getWinner();
+// function checkEndGame() {
+//     const playerOneSide = board.slice(1, 7).reduce(function(acc, cur) {
+//         return acc + cur
+//     }, 0);
+//     const playerTwoSide = board.slice(8).reduce(function(acc, cur) {
+//         return acc + cur
+//     }, 0);
+//     if (playerOneSide === 0 || playerTwoSide === 0) {
+//     }
+//        winner = getWinner();
 
-};
+// };
     
     
-function getWinner(playerOneSide, playerTwoSide) {
-    let playerOneTotal = playerOneSide + board[7];
-    console.log(playerOneTotal)
-    let playerTwoTotal = playerTwoSide + board[0];
-    console.log(playerTwoTotal)
-    if (playerOneTotal > playerTwoTotal) {
-       msgEl.innerHTML = `CONGRATULATIONS PLAYER ONE<BR> YOU WON!`
-    } else if (playerOneTotal < playerTwoTotal) {
-        msgEl.innerHTML = `CONGRATULATIONS PLAYER ONE<BR> YOU WON!`
-    } else if (playerOneTotal = playerTwoTotal) {
-        msgEl.innerHTML = `OOH FUN - A TIE!`
-    } else {
+function getWinner() {
+    let playerOneTotal = board.slice(1, 8).reduce(function(acc, cur) {
+        return acc + cur
+    }, 0);
+    let playerTwoTotal = board.slice(1, 7).reduce(function(acc, cur) {
+        return acc + cur
+    }, board[0]);
+    while (board[0] + board[7] < 48) {
         msgEl.innerHTML = `${playerLookup[turn].name}'s</span> Turn`;
+    }
+    while (board[0] + board[7] === 48) {
+        if (playerOneTotal > playerTwoTotal) {
+            msgEl.innerHTML = `CONGRATULATIONS PLAYER ONE<BR> YOU WON!`
+            console.log(playerTwoTotal)
+        } else if (playerOneTotal < playerTwoTotal) {
+            msgEl.innerHTML = `CONGRATULATIONS PLAYER TWO<BR> YOU WON!`
+        } else if (playerOneTotal = playerTwoTotal) {
+            msgEl.innerHTML = `OOH FUN - A TIE!`
+        }
     }
 };
 
