@@ -1,17 +1,11 @@
-<h1>Mancala Game<h1>
+# Mancala Game
 
-<h2>Technologies Used:<h2>
-<ul>
-    <li>JavaScript</li>
-    <li>CSS</li>
-    <li>HTML</li>
-</ul>
+## Technologies Used:
+- JavaScript
+- CSS
+- HTML
 
-Next Steps:
-<ul>
-    <li>Add Additional Rule Logic</li>
-        <ul></ul>
-    <li></li>
-    <li></li>
-    <li></li>
-</ul>
+## Next Steps:
+- Add Additional Rule Logic
+- Add music upon load
+- Add initial message (preferably in a pop up) that shares a welcome message
