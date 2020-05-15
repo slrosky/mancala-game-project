@@ -60,9 +60,9 @@ __*The player with the higher score wins*__
 
 ## Next Steps:
 In a perfect world, with no project deadlines, all of the following elements would be included in initial deployment. As of now, they will be added at a later time to both optimize the player experience and entice would-be mancala players to pick up a game.
-- Add additional rule logic (there are a couple more involved rules about continuing plays that lead to more fun and user strategy)
-- Add music upon load
-- Add initial message (preferably in a pop up) that shares a welcome message
-- Apply responsive design (media queries)
-- Add AI for user to play against a computer opponenet
-- Add different themed boards
+- :thinking: Add additional rule logic (there are a couple more involved rules about continuing plays that lead to more fun and user strategy)
+- :musical_note: Add music upon interaction 
+- :speech_balloon: Add initial message (preferably in a pop up) that shares a welcome message
+- :iphone: Apply responsive design (media queries)
+- :computer: Add AI for user to play against a computer opponenet 
+- :fire: Add different themed boards
