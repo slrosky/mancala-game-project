@@ -1,7 +1,7 @@
 # Mancala
 ### Mancala is considered to be one of the (historically) oldest games still played in modern times. Variations of the game are played all over the world, from India, to Ethiopia, to Egypt, to the Caribbean, and the Americas. Similarities among the many variations used today include the folowing elements:
-### 1. A board or solid substrate that includes parallel rows of hollowed out pods to house playing pieces, and...
-### 2. 48 playing pieces traditionally made of stone or glass (most commonly marbles).
+##### 1. A board or solid substrate that includes parallel rows of hollowed out pods to house playing pieces, and...
+##### 2. 48 playing pieces traditionally made of stone or glass (most commonly marbles).
 ### It is a simple, but important game of strategy that has stood the test of time.
 
 
@@ -51,8 +51,7 @@ In Mancala, there are several rules that must be honored to move and score "poin
 **Scoring**
 
 - A game ends when one of the players has no more pieces on their side of the board, *however*, the player pieces left over on the other player's side of the board are added to their Mancala Cup.
-
-__**The player with the high score wins**__
+__*The player with the high score wins*__
 
 
 
