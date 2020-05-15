@@ -46,7 +46,7 @@ In Mancala, there are several rules that must be honored to move and score "poin
 **Game Rules**
 
 - The Mancala Cups (larger scoring cups) on either end of the board belong to each player respectively
-⋅⋅* The left Mancala Cup belongs to Player One and the Right Mancala Cup belongs to Player Two
+        The left Mancala Cup belongs to Player One and the Right Mancala Cup belongs to Player Two
 - During a player's turn, they can only contribute to their own Mancala Cup when applying their play to the board, but must deposit player pieces in the the opponent's playing cups is their hand still contains stone.
 - If the last stone of the player's turn lands in their Mancala Cup, they get a bonus play and can click on any cup on their side of the board as long as they have stones in it. Counter-clockwise path applies to all plays.
 
