@@ -1,8 +1,10 @@
 # Mancala
 ### Mancala is considered to be one of the (historically) oldest games still played in modern times. Variations of the game are played all over the world, from India, to Ethiopia, to Egypt, to the Caribbean, and the Americas. Similarities among the many variations used today include the folowing elements:
-##### 1. A board or solid substrate that includes parallel rows of hollowed out pods to house playing pieces, and...
+##### 1. A board or solid substrate that includes parallel rows of hollowed out pods to house playing pieces.
 ##### 2. 48 playing pieces traditionally made of stone or glass (most commonly marbles).
+##### 3. Two player game format.
 ### It is a simple, but important game of strategy that has stood the test of time.
+
 
 
 
@@ -51,13 +53,16 @@ In Mancala, there are several rules that must be honored to move and score "poin
 **Scoring**
 
 - A game ends when one of the players has no more pieces on their side of the board, *however*, the player pieces left over on the other player's side of the board are added to their Mancala Cup.
-__*The player with the high score wins*__
+__*The player with the higher score wins*__
+
 
 
 
 ## Next Steps:
 In a perfect world, with no project deadlines, all of the following elements would be included in initial deployment. As of now, they will be added at a later time to both optimize the player experience and entice would-be mancala players to pick up a game.
-- Add Additional Rule Logic
+- Add additional rule logic (there are a couple more involved rules about continuing plays that lead to more fun and user strategy)
 - Add music upon load
 - Add initial message (preferably in a pop up) that shares a welcome message
 - Apply responsive design (media queries)
+- Add AI for user to play against a computer opponenet
+- Add different themed boards
