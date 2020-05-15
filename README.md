@@ -41,12 +41,12 @@ In Mancala, there are several rules that must be honored to move and score "poin
 
 - Player in turn can click on any cup on their side of the board as long as their are player pieces in it (zero pieces in a cup means it is an invalid cup and cannot be played).
 - The number of player pieces in a clicked cup will be stored in a hand and then played in a counter clockwise fashion, setting 1 pieces in each following cup until  the original hand is empty.
-⋅⋅* If a player's hand still has pieces in it after they've contributed to their Mancala Cup, they must continue the play around the board, placing pieces in their opponent's cups in the continuation of the counterclickwise path until their hand is empty.
+        - If a player's hand still has pieces in it after they've contributed to their Mancala Cup, they must continue the play around the board, placing pieces in their opponent's cups in the continuation of the counterclickwise path until their hand is empty.
 
 **Game Rules**
 
 - The Mancala Cups (larger scoring cups) on either end of the board belong to each player respectively
-        The left Mancala Cup belongs to Player One and the Right Mancala Cup belongs to Player Two
+        - The left Mancala Cup belongs to Player One and the Right Mancala Cup belongs to Player Two
 - During a player's turn, they can only contribute to their own Mancala Cup when applying their play to the board, but must deposit player pieces in the the opponent's playing cups is their hand still contains stone.
 - If the last stone of the player's turn lands in their Mancala Cup, they get a bonus play and can click on any cup on their side of the board as long as they have stones in it. Counter-clockwise path applies to all plays.
 
